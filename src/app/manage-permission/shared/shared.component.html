@@ -1,0 +1,24 @@
+<div *ngIf="data.value" class="p-4 bg-white rounded shadow">
+  <h2 class="text-2xl font-medium">{{ data.name }} Actions</h2>
+  <hr class="my-4" />
+  <div *ngFor="let obj of data.permissions" class="mb-2">
+    <p
+      [ngClass]="{ 'text-green-500': obj.value, 'text-red-500': !obj.value }"
+      class="font-medium"
+    >
+      - {{ obj.name }}
+    </p>
+    <div *ngIf="obj.permissions?.length > 0" class="pl-4">
+      <div *ngFor="let subobj of obj.permissions" class="mb-1">
+        <p
+          [ngClass]="{
+            'text-green-500': subobj.value,
+            'text-red-500': !subobj.value
+          }"
+        >
+          - {{ subobj.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

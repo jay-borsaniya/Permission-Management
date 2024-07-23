@@ -1,0 +1,28 @@
+<div class="flex justify-end space-x-2 mb-4">
+  <button
+    class="px-4 py-2 bg-green-500 text-white font-semibold rounded shadow hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+    (click)="onSelectAll()"
+    *ngIf="!isSelectedAll"
+  >
+    Select All
+  </button>
+  <button
+    class="px-4 py-2 bg-red-500 text-white font-semibold rounded shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
+    (click)="onDeselectAll()"
+    *ngIf="isSelectedAll"
+  >
+    Deselect All
+  </button>
+  <button
+    class="px-4 py-2 bg-gray-500 text-white font-semibold rounded shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+</div>
+<div class="flex flex-col gap-5">
+  <app-permission
+    *ngFor="let permission of permissionData"
+    [permissionData]="permission"
+  ></app-permission>
+</div>

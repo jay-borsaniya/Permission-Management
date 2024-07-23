@@ -1,0 +1,37 @@
+<div class="container text-gray-700">
+  <div
+    class="flex w-full align-middle justify-between p-5 hover:dark:bg-gray-600 hover:text-white transition-all duration-[.4s]"
+    [ngClass]="{
+      'bg-blue-200': permissionData.isDisable,
+      'bg-white': !permissionData.isDisable
+    }"
+    (click)="toggleAccordian()"
+  >
+    <h2 class="text-md font-semibold tracking-widest">
+      {{ permissionData.name }}
+    </h2>
+    <div (click)="togglePermission($event)" class="cursor-pointer">
+      <div
+        class="transition-all w-[50px] p-1 rounded-full"
+        [class]="permissionData.value ? 'bg-green-500' : 'bg-red-500'"
+      >
+        <div
+          class="w-[20px] h-[20px] transition-all bg-white rounded-full"
+          [class]="permissionData.value ? 'translate-x-[100%]' : ''"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="isexpanded && permissionData.permissions"
+    class="bg-gray-100 py-5 shadow-md"
+  >
+    <div class="mx-5 flex flex-col gap-2">
+      <app-permission
+        *ngFor="let permission of permissionData.permissions"
+        [permissionData]="permission"
+        [isDisabled]="permissionData.isDisable"
+      ></app-permission>
+    </div>
+  </div>
+</div>
